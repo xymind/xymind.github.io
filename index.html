@@ -928,14 +928,13 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Form validation and write to Message.log
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+        // Form validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             let isValid = true;
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
             
             // Validate name
@@ -964,15 +963,6 @@
             }
             
             if (isValid) {
-                // Prepare log content
-                const log = `Name: ${name}
-                        Email: ${email}
-                        Phone: ${phone}
-                        Message: ${message}
-                        Time: ${new Date().toISOString()}
-                        --------------------------
-                        `;
-
                 alert(
                     document.querySelector('#lang-switch:checked') ? 
                     '感谢您的留言！我们会尽快与您联系。' : 
