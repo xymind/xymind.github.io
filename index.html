@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xiaoyang Technology - Leader in Physical and Mental Health Data</title>
-    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>xymind.ai Technology - Leader in Physical and Mental Health Data</title>
+    <script src=" https://cdn.tailwindcss.com/3.3.3 "></script>
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css ">
+    <link href=" https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap " rel="stylesheet">
     <style>
         :root {
             --primary: #0d8af0;
@@ -37,7 +37,7 @@
         }
         
         .banner {
-            background-image: linear-gradient(rgba(26, 42, 74, 0.7), rgba(26, 42, 74, 0.7)), url('https://s.coze.cn/image/hKo2PFkX-jk/');
+            background-image: linear-gradient(rgba(26, 42, 74, 0.7), rgba(26, 42, 74, 0.7)), url(' https://s.coze.cn/image/hKo2PFkX-jk/ ');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -74,6 +74,77 @@
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
+        
+        /* Language toggle styles */
+        .lang-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            margin-left: 15px;
+        }
+        
+        .lang-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .lang-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255,255,255,0.3);
+            transition: .4s;
+            border-radius: 30px;
+        }
+        
+        .lang-slider:before {
+            position: absolute;
+            content: "EN";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        input:checked + .lang-slider {
+            background-color: rgba(255,255,255,0.3);
+        }
+        
+        input:checked + .lang-slider:before {
+            content: "中";
+            transform: translateX(30px);
+        }
+        
+        /* Language content */
+        .lang-zh {
+            display: none;
+        }
+        
+        .lang-en {
+            display: block;
+        }
+        
+        .lang-toggle input:checked ~ .lang-en {
+            display: none;
+        }
+        
+        .lang-toggle input:checked ~ .lang-zh {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -82,33 +153,83 @@
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold text-white md:text-dark">
-                    <span class="text-primary">Xiaoyang</span> Tech
+                    <span class="text-primary">xymind.ai</span> Tech
                 </a>
                 
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-white md:text-dark hover:text-primary transition">Home</a>
-                    <a href="#about" class="text-white md:text-dark hover:text-primary transition">About Us</a>
-                    <a href="#products" class="text-white md:text-dark hover:text-primary transition">Products</a>
-                    <a href="#technologies" class="text-white md:text-dark hover:text-primary transition">Technologies</a>
-                    <a href="#applications" class="text-white md:text-dark hover:text-primary transition">Applications</a>
-                    <a href="#partners" class="text-white md:text-dark hover:text-primary transition">Partners</a>
-                    <a href="#contact" class="text-white md:text-dark hover:text-primary transition">Contact</a>
+                <div class="flex items-center">
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#home" class="text-white md:text-dark hover:text-primary transition">
+                            <span class="lang-en">Home</span>
+                            <span class="lang-zh">首页</span>
+                        </a>
+                        <a href="#about" class="text-white md:text-dark hover:text-primary transition">
+                            <span class="lang-en">About Us</span>
+                            <span class="lang-zh">公司简介</span>
+                        </a>
+                        <a href="#products" class="text-white md:text-dark hover:text-primary transition">
+                            <span class="lang-en">Products</span>
+                            <span class="lang-zh">产品中心</span>
+                        </a>
+                        <a href="#technologies" class="text-white md:text-dark hover:text-primary transition">
+                            <span class="lang-en">Technologies</span>
+                            <span class="lang-zh">技术特点</span>
+                        </a>
+                        <a href="#applications" class="text-white md:text-dark hover:text-primary transition">
+                            <span class="lang-en">Applications</span>
+                            <span class="lang-zh">应用场景</span>
+                        </a>
+                        <a href="#partners" class="text-white md:text-dark hover:text-primary transition">
+                            <span class="lang-en">Partners</span>
+                            <span class="lang-zh">合作伙伴</span>
+                        </a>
+                        <a href="#contact" class="text-white md:text-dark hover:text-primary transition">
+                            <span class="lang-en">Contact</span>
+                            <span class="lang-zh">联系我们</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Language Toggle -->
+                    <div class="lang-toggle ml-4">
+                        <input type="checkbox" id="lang-switch">
+                        <label class="lang-slider"></label>
+                    </div>
+                    
+                    <button class="md:hidden text-white md:text-dark focus:outline-none" id="mobileMenuButton">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
                 </div>
-                
-                <button class="md:hidden text-white md:text-dark focus:outline-none" id="mobileMenuButton">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
             </div>
             
             <!-- Mobile Menu -->
             <div class="md:hidden hidden bg-white rounded-lg shadow-lg mt-4 py-2" id="mobileMenu">
-                <a href="#home" class="block px-4 py-2 hover:bg-gray-100">Home</a>
-                <a href="#about" class="block px-4 py-2 hover:bg-gray-100">About Us</a>
-                <a href="#products" class="block px-4 py-2 hover:bg-gray-100">Products</a>
-                <a href="#technologies" class="block px-4 py-2 hover:bg-gray-100">Technologies</a>
-                <a href="#applications" class="block px-4 py-2 hover:bg-gray-100">Applications</a>
-                <a href="#partners" class="block px-4 py-2 hover:bg-gray-100">Partners</a>
-                <a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+                <a href="#home" class="block px-4 py-2 hover:bg-gray-100">
+                    <span class="lang-en">Home</span>
+                    <span class="lang-zh">首页</span>
+                </a>
+                <a href="#about" class="block px-4 py-2 hover:bg-gray-100">
+                    <span class="lang-en">About Us</span>
+                    <span class="lang-zh">公司简介</span>
+                </a>
+                <a href="#products" class="block px-4 py-2 hover:bg-gray-100">
+                    <span class="lang-en">Products</span>
+                    <span class="lang-zh">产品中心</span>
+                </a>
+                <a href="#technologies" class="block px-4 py-2 hover:bg-gray-100">
+                    <span class="lang-en">Technologies</span>
+                    <span class="lang-zh">技术特点</span>
+                </a>
+                <a href="#applications" class="block px-4 py-2 hover:bg-gray-100">
+                    <span class="lang-en">Applications</span>
+                    <span class="lang-zh">应用场景</span>
+                </a>
+                <a href="#partners" class="block px-4 py-2 hover:bg-gray-100">
+                    <span class="lang-en">Partners</span>
+                    <span class="lang-zh">合作伙伴</span>
+                </a>
+                <a href="#contact" class="block px-4 py-2 hover:bg-gray-100">
+                    <span class="lang-en">Contact</span>
+                    <span class="lang-zh">联系我们</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -117,11 +238,23 @@
     <section id="home" class="banner pt-32 pb-20 text-white">
         <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-3xl">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Innovative Technology · Healthy Future</h1>
-                <p class="text-xl mb-8">Xiaoyang Technology is committed to creating a world-leading physical and mental health big data platform through biological sensing and AI technology, providing users with convenient and accurate health detection and management solutions.</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="lang-en">Innovative Technology · Healthy Future</span>
+                    <span class="lang-zh">创新科技 · 健康未来</span>
+                </h1>
+                <p class="text-xl mb-8">
+                    <span class="lang-en">xymind.ai Technology is committed to creating a world-leading physical and mental health big data platform through biological sensing and AI technology, providing users with convenient and accurate health detection and management solutions.</span>
+                    <span class="lang-zh">小阳科技致力于通过生物感知和AI技术，打造全球领先的身心健康大数据平台，为用户提供便捷、精准的健康检测与管理方案。</span>
+                </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#products" class="bg-primary hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition">Explore Products</a>
-                    <a href="#contact" class="bg-secondary hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg transition">Contact Us</a>
+                    <a href="#products" class="bg-primary hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition">
+                        <span class="lang-en">Explore Products</span>
+                        <span class="lang-zh">探索产品</span>
+                    </a>
+                    <a href="#contact" class="bg-secondary hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg transition">
+                        <span class="lang-en">Contact Us</span>
+                        <span class="lang-zh">联系我们</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -131,19 +264,34 @@
     <section id="about" class="py-16 bg-white">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">About Xiaoyang Technology</h2>
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="lang-en">About xymind.ai Technology</span>
+                    <span class="lang-zh">关于小阳科技</span>
+                </h2>
                 <div class="w-20 h-1 bg-primary mx-auto"></div>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <img src="https://s.coze.cn/image/ogo9lv0oNSY/" alt="Xiaoyang Technology Office" class="rounded-lg shadow-lg w-full">
+                    <img src=" https://s.coze.cn/image/ogo9lv0oNSY/ " alt="xymind.ai Technology Office" class="rounded-lg shadow-lg w-full">
                 </div>
                 <div>
-                    <p class="mb-6">Beijing Xiaoyang Technology Co., Ltd. is an innovative technology big data enterprise dedicated to acquiring physical and mental health data through biological sensing and recognition technology.</p>
-                    <p class="mb-6">Xiaoyang Technology integrates psychology, physiology, photogrammetry, and computer science to create a physical and mental health big data platform through AI and 3D deep neural network technologies. With advanced physical and mental health measurement technology and AI cloud services, the company provides users with convenient and low-cost health detection and management solutions.</p>
-                    <p class="mb-6">Our mission is to make health management more intelligent and personalized through technological innovation, helping to realize a healthy life for all. Xiaoyang Technology has launched a variety of innovative products, including AI Vitality Mirror, Vitality Treasure physical and mental health measurement cloud service, which are widely used in families, enterprises and medical institutions.</p>
-                    <p>With professional R&D background and technical advantages in the field of physical and mental health, Xiaoyang Technology is leading the new trend of health technology and providing more accurate and convenient health services for global users.</p>
+                    <p class="mb-6">
+                        <span class="lang-en">Beijing xymind.ai Technology Co., Ltd. is an innovative technology big data enterprise dedicated to acquiring physical and mental health data through biological sensing and recognition technology.</span>
+                        <span class="lang-zh">北京小阳科技有限公司是一家科技创新型大数据企业，致力于通过生物感知和识别技术获取身心健康数据。</span>
+                    </p>
+                    <p class="mb-6">
+                        <span class="lang-en">xymind.ai Technology integrates psychology, physiology, photogrammetry, and computer science to create a physical and mental health big data platform through AI and 3D deep neural network technologies. With advanced physical and mental health measurement technology and AI cloud services, the company provides users with convenient and low-cost health detection and management solutions.</span>
+                        <span class="lang-zh">小阳科技融合心理学、生理学、摄影测量学和计算机学等学科，通过AI、三维深度神经网络等技术创建身心健康大数据平台。公司凭借先进的身心健康测量技术和AI云服务，为用户提供便捷、低成本的健康检测和管理方案。</span>
+                    </p>
+                    <p class="mb-6">
+                        <span class="lang-en">Our mission is to make health management more intelligent and personalized through technological innovation, helping to realize a healthy life for all. xymind.ai Technology has launched a variety of innovative products, including AI Vitality Mirror, Vitality Treasure physical and mental health measurement cloud service, which are widely used in families, enterprises and medical institutions.</span>
+                        <span class="lang-zh">我们的使命是通过科技创新，让健康管理更加智能化、个性化，助力全民健康生活的实现。小阳科技已推出多款创新产品，包括AI活力镜、活力宝身心健康测量云服务等，广泛应用于家庭、企业和医疗机构。</span>
+                    </p>
+                    <p>
+                        <span class="lang-en">With professional R&D background and technical advantages in the field of physical and mental health, xymind.ai Technology is leading the new trend of health technology and providing more accurate and convenient health services for global users.</span>
+                        <span class="lang-zh">凭借在身心健康领域的专业研发背景和技术优势，小阳科技正引领健康科技的新潮流，为全球用户提供更精准、更便捷的健康服务。</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -153,39 +301,72 @@
     <section id="products" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Innovative Technology Products</h2>
-                <p class="text-xl text-neutral">Comprehensive Protection for Your Physical and Mental Health</p>
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="lang-en">Innovative Technology Products</span>
+                    <span class="lang-zh">创新科技产品</span>
+                </h2>
+                <p class="text-xl text-neutral">
+                    <span class="lang-en">Comprehensive Protection for Your Physical and Mental Health</span>
+                    <span class="lang-zh">全方位守护您的身心健康</span>
+                </p>
                 <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Product 1 -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <img src="https://s.coze.cn/image/Z7yASwqefHQ/" alt="AI Vitality Mirror" class="w-full h-48 object-cover">
+                    <img src=" https://s.coze.cn/image/Z7yASwqefHQ/ " alt="AI Vitality Mirror" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">Xiaoyang AI Vitality Mirror</h3>
-                        <p class="text-neutral mb-4">21.5-inch smart health mirror, equipped with Android system and high-performance hardware, supports non-contact health detection, providing analysis of multiple indicators such as heart rate, blood pressure, and blood oxygen.</p>
-                        <a href="#" class="text-primary font-medium hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-en">xymind.ai AI Vitality Mirror</span>
+                            <span class="lang-zh">小阳AI活力镜</span>
+                        </h3>
+                        <p class="text-neutral mb-4">
+                            <span class="lang-en">21.5-inch smart health mirror, equipped with Android system and high-performance hardware, supports non-contact health detection, providing analysis of multiple indicators such as heart rate, blood pressure, and blood oxygen.</span>
+                            <span class="lang-zh">21.5寸智能健康镜，搭载Android系统和高性能硬件，支持非接触式健康检测，提供心率、血压、血氧等多项指标分析。</span>
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:underline">
+                            <span class="lang-en">Learn More <i class="fas fa-arrow-right ml-1"></i></span>
+                            <span class="lang-zh">了解更多 <i class="fas fa-arrow-right ml-1"></i></span>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Product 2 -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <img src="https://s.coze.cn/image/q6fYcwYAhZk/" alt="Vitality Treasure" class="w-full h-48 object-cover">
+                    <img src=" https://s.coze.cn/image/q6fYcwYAhZk/ " alt="Vitality Treasure" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">Vitality Treasure Physical and Mental Health Cloud Service</h3>
-                        <p class="text-neutral mb-4">SAAS platform based on AI and big data technology, providing personalized health advice and anomaly detection, suitable for enterprise and personal health management.</p>
-                        <a href="#" class="text-primary font-medium hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-en">Vitality Treasure Physical and Mental Health Cloud Service</span>
+                            <span class="lang-zh">活力宝身心健康云服务</span>
+                        </h3>
+                        <p class="text-neutral mb-4">
+                            <span class="lang-en">SAAS platform based on AI and big data technology, providing personalized health advice and anomaly detection, suitable for enterprise and personal health management.</span>
+                            <span class="lang-zh">基于AI和大数据技术的SAAS平台，提供个性化的健康建议和异常检测，适用于企业和个人健康管理。</span>
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:underline">
+                            <span class="lang-en">Learn More <i class="fas fa-arrow-right ml-1"></i></span>
+                            <span class="lang-zh">了解更多 <i class="fas fa-arrow-right ml-1"></i></span>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Product 3 -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
-                    <img src="https://s.coze.cn/image/shQ1F3IObR0/" alt="AI Light Physical Examination" class="w-full h-48 object-cover">
+                    <img src=" https://s.coze.cn/image/shQ1F3IObR0/ " alt="AI Light Physical Examination" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-3">AI Light Physical Examination</h3>
-                        <p class="text-neutral mb-4">Cardiovascular and mental health detection can be completed through the mobile phone camera, providing analysis of multiple indicators such as heart rate, blood pressure, blood oxygen, and psychological stress.</p>
-                        <a href="#" class="text-primary font-medium hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-en">AI Light Physical Examination</span>
+                            <span class="lang-zh">AI轻体检</span>
+                        </h3>
+                        <p class="text-neutral mb-4">
+                            <span class="lang-en">Cardiovascular and mental health detection can be completed through the mobile phone camera, providing analysis of multiple indicators such as heart rate, blood pressure, blood oxygen, and psychological stress.</span>
+                            <span class="lang-zh">通过手机摄像头即可完成心血管和心理健康检测，提供心率、血压、血氧、心理压力等多项指标分析。</span>
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:underline">
+                            <span class="lang-en">Learn More <i class="fas fa-arrow-right ml-1"></i></span>
+                            <span class="lang-zh">了解更多 <i class="fas fa-arrow-right ml-1"></i></span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -196,8 +377,14 @@
     <section id="technologies" class="py-16 bg-white">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Driven by Innovative Technology</h2>
-                <p class="text-xl text-neutral">Creating a New Experience in Health Management</p>
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="lang-en">Driven by Innovative Technology</span>
+                    <span class="lang-zh">创新科技驱动</span>
+                </h2>
+                <p class="text-xl text-neutral">
+                    <span class="lang-en">Creating a New Experience in Health Management</span>
+                    <span class="lang-zh">打造健康管理新体验</span>
+                </p>
                 <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </div>
             
@@ -207,8 +394,14 @@
                     <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-brain text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Artificial Intelligence Analysis</h3>
-                    <p class="text-neutral">AI algorithms based on deep learning, accurately analyze physical and mental health data, and provide personalized health advice.</p>
+                    <h3 class="text-xl font-bold mb-3">
+                        <span class="lang-en">Artificial Intelligence Analysis</span>
+                        <span class="lang-zh">人工智能分析</span>
+                    </h3>
+                    <p class="text-neutral">
+                        <span class="lang-en">AI algorithms based on deep learning, accurately analyze physical and mental health data, and provide personalized health advice.</span>
+                        <span class="lang-zh">基于深度学习的AI算法，精准分析身心健康数据，提供个性化健康建议。</span>
+                    </p>
                 </div>
                 
                 <!-- Tech 2 -->
@@ -216,8 +409,14 @@
                     <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-cloud text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Cloud Big Data Platform</h3>
-                    <p class="text-neutral">Build a physical and mental health big data platform to realize real-time monitoring, analysis and early warning functions of data.</p>
+                    <h3 class="text-xl font-bold mb-3">
+                        <span class="lang-en">Cloud Big Data Platform</span>
+                        <span class="lang-zh">云端大数据平台</span>
+                    </h3>
+                    <p class="text-neutral">
+                        <span class="lang-en">Build a physical and mental health big data platform to realize real-time monitoring, analysis and early warning functions of data.</span>
+                        <span class="lang-zh">构建身心健康大数据平台，实现数据的实时监测、分析和预警功能。</span>
+                    </p>
                 </div>
                 
                 <!-- Tech 3 -->
@@ -225,8 +424,14 @@
                     <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-camera text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Non-contact Detection</h3>
-                    <p class="text-neutral">Realize non-contact health detection through cameras and sensors, improving user experience and convenience.</p>
+                    <h3 class="text-xl font-bold mb-3">
+                        <span class="lang-en">Non-contact Detection</span>
+                        <span class="lang-zh">非接触式检测</span>
+                    </h3>
+                    <p class="text-neutral">
+                        <span class="lang-en">Realize non-contact health detection through cameras and sensors, improving user experience and convenience.</span>
+                        <span class="lang-zh">通过摄像头和传感器实现无接触健康检测，提升用户体验和便捷性。</span>
+                    </p>
                 </div>
                 
                 <!-- Tech 4 -->
@@ -234,8 +439,14 @@
                     <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-tachometer-alt text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">High-precision Measurement</h3>
-                    <p class="text-neutral">Using multi-spectral imaging and blood optical imaging technology to ensure the accuracy and reliability of measurement results.</p>
+                    <h3 class="text-xl font-bold mb-3">
+                        <span class="lang-en">High-precision Measurement</span>
+                        <span class="lang-zh">高精度测量</span>
+                    </h3>
+                    <p class="text-neutral">
+                        <span class="lang-en">Using multi-spectral imaging and blood optical imaging technology to ensure the accuracy and reliability of measurement results.</span>
+                        <span class="lang-zh">采用多光谱成像和血液光学成像技术，确保测量结果的准确性和可靠性。</span>
+                    </p>
                 </div>
             </div>
         </div>
@@ -245,8 +456,14 @@
     <section id="applications" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Multi-scenario Applications</h2>
-                <p class="text-xl text-neutral">Fully Meeting Health Management Needs</p>
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="lang-en">Multi-scenario Applications</span>
+                    <span class="lang-zh">多场景应用</span>
+                </h2>
+                <p class="text-xl text-neutral">
+                    <span class="lang-en">Fully Meeting Health Management Needs</span>
+                    <span class="lang-zh">全方位满足健康管理需求</span>
+                </p>
                 <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </div>
             
@@ -255,29 +472,47 @@
                 <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
                     <div class="bg-primary bg-opacity-10 p-6">
                         <i class="fas fa-home text-3xl text-primary mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Family Health Management</h3>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-en">Family Health Management</span>
+                            <span class="lang-zh">家庭健康管理</span>
+                        </h3>
                     </div>
                     <div class="p-6">
                         <ul class="space-y-2">
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Daily health monitoring and recording</span>
+                                <span>
+                                    <span class="lang-en">Daily health monitoring and recording</span>
+                                    <span class="lang-zh">日常健康监测与记录</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Family member health data management</span>
+                                <span>
+                                    <span class="lang-en">Family member health data management</span>
+                                    <span class="lang-zh">家庭成员健康数据管理</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Remote health monitoring for the elderly</span>
+                                <span>
+                                    <span class="lang-en">Remote health monitoring for the elderly</span>
+                                    <span class="lang-zh">老人健康远程监护</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Chronic disease home management program</span>
+                                <span>
+                                    <span class="lang-en">Chronic disease home management program</span>
+                                    <span class="lang-zh">慢病居家管理方案</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Family health risk assessment</span>
+                                <span>
+                                    <span class="lang-en">Family health risk assessment</span>
+                                    <span class="lang-zh">家庭健康风险评估</span>
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -287,29 +522,47 @@
                 <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
                     <div class="bg-primary bg-opacity-10 p-6">
                         <i class="fas fa-building text-3xl text-primary mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Enterprise Health Management</h3>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-en">Enterprise Health Management</span>
+                            <span class="lang-zh">企业健康管理</span>
+                        </h3>
                     </div>
                     <div class="p-6">
                         <ul class="space-y-2">
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Employee health record management</span>
+                                <span>
+                                    <span class="lang-en">Employee health record management</span>
+                                    <span class="lang-zh">员工健康档案管理</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Occupational disease risk early warning system</span>
+                                <span>
+                                    <span class="lang-en">Occupational disease risk early warning system</span>
+                                    <span class="lang-zh">职业病风险预警系统</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Workplace stress monitoring and intervention</span>
+                                <span>
+                                    <span class="lang-en">Workplace stress monitoring and intervention</span>
+                                    <span class="lang-zh">职场压力监测与干预</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Healthy enterprise construction program</span>
+                                <span>
+                                    <span class="lang-en">Healthy enterprise construction program</span>
+                                    <span class="lang-zh">健康企业建设方案</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Group health data analysis</span>
+                                <span>
+                                    <span class="lang-en">Group health data analysis</span>
+                                    <span class="lang-zh">团体健康数据分析</span>
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -319,29 +572,47 @@
                 <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
                     <div class="bg-primary bg-opacity-10 p-6">
                         <i class="fas fa-hospital text-3xl text-primary mb-4"></i>
-                        <h3 class="text-xl font-bold mb-3">Medical Institutions</h3>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-en">Medical Institutions</span>
+                            <span class="lang-zh">医疗机构</span>
+                        </h3>
                     </div>
                     <div class="p-6">
                         <ul class="space-y-2">
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Outpatient rapid health screening</span>
+                                <span>
+                                    <span class="lang-en">Outpatient rapid health screening</span>
+                                    <span class="lang-zh">门诊快速健康筛查</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Remote monitoring of chronic disease patients</span>
+                                <span>
+                                    <span class="lang-en">Remote monitoring of chronic disease patients</span>
+                                    <span class="lang-zh">慢病患者远程监护</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Health data analysis platform</span>
+                                <span>
+                                    <span class="lang-en">Health data analysis platform</span>
+                                    <span class="lang-zh">健康数据分析平台</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Rehabilitation effect evaluation system</span>
+                                <span>
+                                    <span class="lang-en">Rehabilitation effect evaluation system</span>
+                                    <span class="lang-zh">康复效果评估系统</span>
+                                </span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check text-secondary mr-2 mt-1"></i>
-                                <span>Customized health management programs</span>
+                                <span>
+                                    <span class="lang-en">Customized health management programs</span>
+                                    <span class="lang-zh">健康管理方案定制</span>
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -354,29 +625,35 @@
     <section id="partners" class="py-16 bg-white">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Our Partners</h2>
-                <p class="text-xl text-neutral">Working with Industry-leading Institutions to Create a Healthy Technology Future</p>
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="lang-en">Our Partners</span>
+                    <span class="lang-zh">合作伙伴</span>
+                </h2>
+                <p class="text-xl text-neutral">
+                    <span class="lang-en">Working with Industry-leading Institutions to Create a Healthy Technology Future</span>
+                    <span class="lang-zh">携手行业领先机构，共创健康科技未来</span>
+                </p>
                 <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
                 <div class="flex items-center justify-center">
-                    <img src="https://s.coze.cn/image/9Yje0Ba3D-8/" alt="Partner Logo" class="partner-logo max-h-16">
+                    <img src=" https://s.coze.cn/image/9Yje0Ba3D-8/ " alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
                 <div class="flex items-center justify-center">
-                    <img src="https://s.coze.cn/image/-sV8KW-adYY/" alt="Partner Logo" class="partner-logo max-h-16">
+                    <img src=" https://s.coze.cn/image/-sV8KW-adYY/ " alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
                 <div class="flex items-center justify-center">
-                    <img src="https://s.coze.cn/image/jth84seu4tg/" alt="Partner Logo" class="partner-logo max-h-16">
+                    <img src=" https://s.coze.cn/image/jth84seu4tg/ " alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
                 <div class="flex items-center justify-center">
-                    <img src="https://s.coze.cn/image/9I3W9BEpcoc/" alt="Partner Logo" class="partner-logo max-h-16">
+                    <img src=" https://s.coze.cn/image/9I3W9BEpcoc/ " alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
                 <div class="flex items-center justify-center">
-                    <img src="https://s.coze.cn/image/wDz9tQuPF7I/" alt="Partner Logo" class="partner-logo max-h-16">
+                    <img src=" https://s.coze.cn/image/wDz9tQuPF7I/ " alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
                 <div class="flex items-center justify-center">
-                    <img src="https://s.coze.cn/image/OfmznrIimjE/" alt="Partner Logo" class="partner-logo max-h-16">
+                    <img src=" https://s.coze.cn/image/OfmznrIimjE/ " alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
             </div>
         </div>
@@ -386,7 +663,10 @@
     <section id="contact" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Get More Information</h2>
+                <h2 class="text-3xl font-bold mb-4">
+                    <span class="lang-en">Get More Information</span>
+                    <span class="lang-zh">获取更多信息</span>
+                </h2>
                 <div class="w-20 h-1 bg-primary mx-auto"></div>
             </div>
             
@@ -394,27 +674,39 @@
                 <div>
                     <div class="mb-8">
                         <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fas fa-map-marker-alt text-primary mr-2"></i> Company Address
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                            <span class="lang-en">Company Address</span>
+                            <span class="lang-zh">公司地址</span>
                         </h3>
-                        <p>15th Floor, Innovation Building, Science and Technology Park, Haidian District, Beijing</p>
+                        <p>
+                            <span class="lang-en">15th Floor, Innovation Building, Science and Technology Park, Haidian District, Beijing</span>
+                            <span class="lang-zh">北京市海淀区科技园区创新大厦15层</span>
+                        </p>
                     </div>
                     
                     <div class="mb-8">
                         <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fas fa-phone text-primary mr-2"></i> Contact Phone
+                            <i class="fas fa-phone text-primary mr-2"></i>
+                            <span class="lang-en">Contact Phone</span>
+                            <span class="lang-zh">联系电话</span>
                         </h3>
-                        <p>+86 10 8888 7777</p>
+                        <p>+86 10 8216 9013</p>
                     </div>
                     
                     <div class="mb-8">
                         <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fas fa-envelope text-primary mr-2"></i> Email Address
+                            <i class="fas fa-envelope text-primary mr-2"></i>
+                            <span class="lang-en">Email Address</span>
+                            <span class="lang-zh">电子邮箱</span>
                         </h3>
-                        <p>contact@xiaoyangtech.com</p>
+                        <p>hc@xymind.ai</p>
                     </div>
                     
                     <div>
-                        <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                        <h3 class="text-xl font-bold mb-4">
+                            <span class="lang-en">Follow Us</span>
+                            <span class="lang-zh">关注我们</span>
+                        </h3>
                         <div class="flex space-x-4">
                             <a href="#" class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
                                 <i class="fab fa-linkedin-in"></i>
@@ -435,29 +727,53 @@
                 <div>
                     <form id="contactForm" class="bg-white rounded-xl shadow-md p-8">
                         <div class="mb-6">
-                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">
+                                <span class="lang-en">Name</span>
+                                <span class="lang-zh">姓名</span>
+                            </label>
                             <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <div id="nameError" class="error-message hidden">Please enter your name</div>
+                            <div id="nameError" class="error-message hidden">
+                                <span class="lang-en">Please enter your name</span>
+                                <span class="lang-zh">请输入您的姓名</span>
+                            </div>
                         </div>
                         
                         <div class="mb-6">
-                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">
+                                <span class="lang-en">Email</span>
+                                <span class="lang-zh">邮箱</span>
+                            </label>
                             <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                            <div id="emailError" class="error-message hidden">Please enter a valid email address</div>
+                            <div id="emailError" class="error-message hidden">
+                                <span class="lang-en">Please enter a valid email address</span>
+                                <span class="lang-zh">请输入有效的邮箱地址</span>
+                            </div>
                         </div>
                         
                         <div class="mb-6">
-                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone</label>
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">
+                                <span class="lang-en">Phone</span>
+                                <span class="lang-zh">电话</span>
+                            </label>
                             <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                         </div>
                         
                         <div class="mb-6">
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">
+                                <span class="lang-en">Message</span>
+                                <span class="lang-zh">留言</span>
+                            </label>
                             <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
-                            <div id="messageError" class="error-message hidden">Please enter your message</div>
+                            <div id="messageError" class="error-message hidden">
+                                <span class="lang-en">Please enter your message</span>
+                                <span class="lang-zh">请输入您的留言</span>
+                            </div>
                         </div>
                         
-                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition">Submit Information</button>
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition">
+                            <span class="lang-en">Submit Information</span>
+                            <span class="lang-zh">提交信息</span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -469,8 +785,14 @@
         <div class="container mx-auto px-4 md:px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Xiaoyang Technology</h3>
-                    <p class="mb-4">Committed to acquiring physical and mental health data through biological sensing and recognition technology, building a physical and mental health big data platform, and providing users with convenient and low-cost health detection and management solutions.</p>
+                    <h3 class="text-xl font-bold mb-4">
+                        <span class="lang-en">xymind.ai Technology</span>
+                        <span class="lang-zh">小阳科技</span>
+                    </h3>
+                    <p class="mb-4">
+                        <span class="lang-en">Committed to acquiring physical and mental health data through biological sensing and recognition technology, building a physical and mental health big data platform, and providing users with convenient and low-cost health detection and management solutions.</span>
+                        <span class="lang-zh">致力于通过生物感知和识别技术获取身心健康数据，打造身心健康大数据平台，为用户提供便捷、低成本的健康检测和管理方案。</span>
+                    </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-twitter"></i></a>
@@ -480,47 +802,89 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Products</h3>
+                    <h3 class="text-xl font-bold mb-4">
+                        <span class="lang-en">Products</span>
+                        <span class="lang-zh">产品中心</span>
+                    </h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-secondary transition">Xiaoyang AI Vitality Mirror</a></li>
-                        <li><a href="#" class="hover:text-secondary transition">Vitality Treasure Cloud Service</a></li>
-                        <li><a href="#" class="hover:text-secondary transition">AI Light Physical Examination</a></li>
-                        <li><a href="#" class="hover:text-secondary transition">Occupational Health Big Data Platform</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">
+                            <span class="lang-en">xymind.ai AI Vitality Mirror</span>
+                            <span class="lang-zh">小阳AI活力镜</span>
+                        </a></li>
+                        <li><a href="#" class="hover:text-secondary transition">
+                            <span class="lang-en">Vitality Treasure Cloud Service</span>
+                            <span class="lang-zh">活力宝云服务</span>
+                        </a></li>
+                        <li><a href="#" class="hover:text-secondary transition">
+                            <span class="lang-en">AI Light Physical Examination</span>
+                            <span class="lang-zh">AI轻体检</span>
+                        </a></li>
+                        <li><a href="#" class="hover:text-secondary transition">
+                            <span class="lang-en">Occupational Health Big Data Platform</span>
+                            <span class="lang-zh">职业健康大数据平台</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <h3 class="text-xl font-bold mb-4">
+                        <span class="lang-en">Quick Links</span>
+                        <span class="lang-zh">快速链接</span>
+                    </h3>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="hover:text-secondary transition">Home</a></li>
-                        <li><a href="#about" class="hover:text-secondary transition">About Us</a></li>
-                        <li><a href="#products" class="hover:text-secondary transition">Products</a></li>
-                        <li><a href="#contact" class="hover:text-secondary transition">Contact</a></li>
+                        <li><a href="#home" class="hover:text-secondary transition">
+                            <span class="lang-en">Home</span>
+                            <span class="lang-zh">首页</span>
+                        </a></li>
+                        <li><a href="#about" class="hover:text-secondary transition">
+                            <span class="lang-en">About Us</span>
+                            <span class="lang-zh">公司简介</span>
+                        </a></li>
+                        <li><a href="#products" class="hover:text-secondary transition">
+                            <span class="lang-en">Products</span>
+                            <span class="lang-zh">产品中心</span>
+                        </a></li>
+                        <li><a href="#contact" class="hover:text-secondary transition">
+                            <span class="lang-en">Contact</span>
+                            <span class="lang-zh">联系我们</span>
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <h3 class="text-xl font-bold mb-4">
+                        <span class="lang-en">Contact Us</span>
+                        <span class="lang-zh">联系我们</span>
+                    </h3>
                     <ul class="space-y-2">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt text-secondary mr-2 mt-1"></i>
-                            <span>Innovation Building, Science and Technology Park, Haidian District, Beijing</span>
+                            <span>
+                                <span class="lang-en">Innovation Building, Science and Technology Park, Haidian District, Beijing</span>
+                                <span class="lang-zh">北京市海淀区科技园区创新大厦</span>
+                            </span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-phone text-secondary mr-2 mt-1"></i>
-                            <span>+86 10 8888 7777</span>
+                            <span>+86 10 8216 9013</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-secondary mr-2 mt-1"></i>
-                            <span>contact@xiaoyangtech.com</span>
+                            <span>hc@xymind.ai</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>© 2024 Beijing Xiaoyang Technology Co., Ltd. All Rights Reserved | Beijing ICP No. 12345678</p>
-                <p class="mt-2"></p>
+                <p>
+                    <span class="lang-en">© 2024 Beijing xymind.ai Technology Co., Ltd. All Rights Reserved | Beijing ICP No. B2-2O214881</span>
+                    <span class="lang-zh">© 2024 北京小阳科技有限公司 版权所有 | 京B2-2O214881</span>
+                </p>
+                <p class="mt-2">
+                    <span class="lang-en">Created by <a href=" https://space.coze.cn " class="hover:text-secondary transition">coze space</a> | Page content generated by AI, for reference only</span>
+                    <span class="lang-zh">由 <a href=" https://space.coze.cn " class="hover:text-secondary transition">coze space</a> 创建 | 页面内容由AI生成，仅供参考</span>
+                </p>
             </div>
         </div>
     </footer>
@@ -577,7 +941,11 @@
             }
             
             if (isValid) {
-                alert('Thank you for your message! We will contact you soon.');
+                alert(
+                    document.querySelector('#lang-switch:checked') ? 
+                    '感谢您的留言！我们会尽快与您联系。' : 
+                    'Thank you for your message! We will contact you soon.'
+                );
                 this.reset();
             }
         });
