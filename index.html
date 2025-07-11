@@ -1,838 +1,348 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小阳科技 - 身心健康数据引领者</title>
-    <link href=" https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap " rel="stylesheet">
-    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
+    <title>Xiaoyang Technology - Leader in Physical and Mental Health Data</title>
+    <script src="https://cdn.tailwindcss.com/3.3.3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0d8af0;
             --secondary: #ff6b35;
             --dark: #1a2a4a;
             --light: #f8f9fa;
-            --gray: #6c757d;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --neutral: #6c757d;
         }
         
         body {
             font-family: 'Roboto', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-color: #f5f7fa;
+            color: var(--dark);
+            scroll-behavior: smooth;
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: var(--dark);
         }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 导航栏样式 */
         .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
         
         .navbar.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: rgba(248, 249, 250, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        
-        .logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            color: var(--primary);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 16px;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.3s;
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* Banner 样式 */
         .banner {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(13, 138, 240, 0.8), rgba(26, 42, 74, 0.9)), url(' https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80 ') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
+            background-image: linear-gradient(rgba(26, 42, 74, 0.7), rgba(26, 42, 74, 0.7)), url('https://s.coze.cn/image/hKo2PFkX-jk/');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         
-        .banner-content {
-            max-width: 650px;
-            padding-top: 80px;
-        }
-        
-        .banner h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-            line-height: 1.2;
-        }
-        
-        .banner p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--secondary);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .btn:hover {
-            background-color: #e05a2a;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid white;
-            margin-left: 15px;
-        }
-        
-        .btn-outline:hover {
-            background-color: white;
-            color: var(--primary);
-        }
-        
-        /* 各内容区块通用样式 */
-        .section {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 70px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 20px auto 0;
-            font-size: 1.1rem;
-        }
-        
-        /* 公司简介样式 */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* 产品中心样式 */
-        .products {
-            background-color: var(--light);
-        }
-        
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-img {
-            height: 200px;
-            background-color: #eef5ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .product-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(13, 138, 240, 0.1), rgba(26, 42, 74, 0.1));
-        }
-        
-        .product-img i {
-            font-size: 4rem;
-            color: var(--primary);
-            z-index: 1;
-        }
-        
-        .product-info {
-            padding: 25px;
-        }
-        
-        .product-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-        
-        .product-info p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-        
-        /* 技术特点样式 */
-        .tech-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .tech-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            text-align: center;
+        .card-hover {
             transition: all 0.3s ease;
         }
         
-        .tech-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tech-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), #1a6bc5);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-        
-        .tech-icon i {
-            font-size: 2.5rem;
-            color: white;
-        }
-        
-        .tech-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-        
-        /* 应用场景样式 */
-        .scenarios {
-            background-color: var(--light);
-        }
-        
-        .scenario-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .scenario-card {
-            flex: 1;
-            min-width: 300px;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .scenario-header {
-            background: linear-gradient(135deg, var(--primary), #1a6bc5);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .scenario-header h3 {
-            color: white;
-            font-size: 1.4rem;
-        }
-        
-        .scenario-body {
-            padding: 25px;
-        }
-        
-        .scenario-body ul {
-            list-style: none;
-        }
-        
-        .scenario-body li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .scenario-body li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-        
-        /* 合作伙伴样式 */
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .partner-logo {
-            background: white;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            padding: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .partner-logo:hover {
+        .card-hover:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .partner-logo img {
-            max-width: 100%;
-            max-height: 70px;
+        .partner-logo {
             filter: grayscale(100%);
             opacity: 0.7;
             transition: all 0.3s ease;
         }
         
-        .partner-logo:hover img {
+        .partner-logo:hover {
             filter: grayscale(0);
             opacity: 1;
         }
         
-        /* 联系我们样式 */
-        .contact {
-            background: linear-gradient(135deg, rgba(13, 138, 240, 0.9), rgba(26, 42, 74, 0.9)), url(' https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80 ') no-repeat center center/cover;
-            color: white;
+        input:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary);
         }
         
-        .contact-container {
-            display: flex;
-            gap: 50px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: white;
-        }
-        
-        .contact-details {
-            margin-bottom: 30px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .contact-icon i {
-            color: white;
-            font-size: 1.2rem;
-        }
-        
-        .contact-text {
-            flex: 1;
-        }
-        
-        .contact-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: white;
-        }
-        
-        .contact-form {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.9);
-            font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            height: 120px;
-            resize: none;
-        }
-        
-        /* 页脚样式 */
-        .footer {
-            background-color: var(--dark);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 60px 0 30px;
-        }
-        
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-col h4 {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-col h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 992px) {
-            .banner h1 {
-                font-size: 2.8rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .banner h1 {
-                font-size: 2.3rem;
-            }
-            
-            .section {
-                padding: 70px 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
         }
     </style>
 </head>
-<body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <div class="logo-text">小阳科技</div>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50 py-4">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-white md:text-dark">
+                    <span class="text-primary">Xiaoyang</span> Tech
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white md:text-dark hover:text-primary transition">Home</a>
+                    <a href="#about" class="text-white md:text-dark hover:text-primary transition">About Us</a>
+                    <a href="#products" class="text-white md:text-dark hover:text-primary transition">Products</a>
+                    <a href="#technologies" class="text-white md:text-dark hover:text-primary transition">Technologies</a>
+                    <a href="#applications" class="text-white md:text-dark hover:text-primary transition">Applications</a>
+                    <a href="#partners" class="text-white md:text-dark hover:text-primary transition">Partners</a>
+                    <a href="#contact" class="text-white md:text-dark hover:text-primary transition">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-white md:text-dark focus:outline-none" id="mobileMenuButton">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">首页</a></li>
-                <li><a href="#about">公司简介</a></li>
-                <li><a href="#products">产品中心</a></li>
-                <li><a href="#tech">技术特点</a></li>
-                <li><a href="#scenarios">应用场景</a></li>
-                <li><a href="#partners">合作伙伴</a></li>
-                <li><a href="#contact">联系我们</a></li>
-            </ul>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden bg-white rounded-lg shadow-lg mt-4 py-2" id="mobileMenu">
+                <a href="#home" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+                <a href="#about" class="block px-4 py-2 hover:bg-gray-100">About Us</a>
+                <a href="#products" class="block px-4 py-2 hover:bg-gray-100">Products</a>
+                <a href="#technologies" class="block px-4 py-2 hover:bg-gray-100">Technologies</a>
+                <a href="#applications" class="block px-4 py-2 hover:bg-gray-100">Applications</a>
+                <a href="#partners" class="block px-4 py-2 hover:bg-gray-100">Partners</a>
+                <a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Banner区域 -->
-    <section class="banner" id="home">
-        <div class="container">
-            <div class="banner-content">
-                <h1>创新科技 · 健康未来</h1>
-                <p>小阳科技致力于通过生物感知和AI技术，打造全球领先的身心健康大数据平台，为用户提供便捷、精准的健康检测与管理方案。</p>
-                <a href="#products" class="btn">探索产品</a>
-                <a href="#contact" class="btn btn-outline">联系我们</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 公司简介 -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>公司简介</h2>
-                <p>北京小阳科技有限公司是一家科技创新型大数据企业，致力于通过生物感知和识别技术获取身心健康数据</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>关于小阳科技</h3>
-                    <p>小阳科技融合心理学、生理学、摄影测量学和计算机学等学科，通过AI、三维深度神经网络等技术创建身心健康大数据平台。公司凭借先进的身心健康测量技术和AI云服务，为用户提供便捷、低成本的健康检测和管理方案。</p>
-                    <p>我们的使命是通过科技创新，让健康管理更加智能化、个性化，助力全民健康生活的实现。小阳科技已推出多款创新产品，包括AI活力镜、活力宝身心健康测量云服务等，广泛应用于家庭、企业和医疗机构。</p>
-                    <p>凭借在身心健康领域的专业研发背景和技术优势，小阳科技正引领健康科技的新潮流，为全球用户提供更精准、更便捷的健康服务。</p>
-                </div>
-                <div class="about-image">
-                    <img src=" https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80 " alt="小阳科技办公环境">
+    <!-- Header Banner -->
+    <section id="home" class="banner pt-32 pb-20 text-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Innovative Technology · Healthy Future</h1>
+                <p class="text-xl mb-8">Xiaoyang Technology is committed to creating a world-leading physical and mental health big data platform through biological sensing and AI technology, providing users with convenient and accurate health detection and management solutions.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#products" class="bg-primary hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition">Explore Products</a>
+                    <a href="#contact" class="bg-secondary hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg transition">Contact Us</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 产品中心 -->
-    <section class="section products" id="products">
-        <div class="container">
-            <div class="section-title">
-                <h2>产品中心</h2>
-                <p>创新科技产品，全方位守护您的身心健康</p>
+    <!-- About Us -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">About Xiaoyang Technology</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
             </div>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-mirror"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>小阳AI活力镜</h3>
-                        <p>21.5寸智能健康镜，搭载Android系统和高性能硬件，支持非接触式健康检测，提供心率、血压、血氧等多项指标分析。</p>
-                        <a href="#" class="btn">了解更多</a>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://s.coze.cn/image/ogo9lv0oNSY/" alt="Xiaoyang Technology Office" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div>
+                    <p class="mb-6">Beijing Xiaoyang Technology Co., Ltd. is an innovative technology big data enterprise dedicated to acquiring physical and mental health data through biological sensing and recognition technology.</p>
+                    <p class="mb-6">Xiaoyang Technology integrates psychology, physiology, photogrammetry, and computer science to create a physical and mental health big data platform through AI and 3D deep neural network technologies. With advanced physical and mental health measurement technology and AI cloud services, the company provides users with convenient and low-cost health detection and management solutions.</p>
+                    <p class="mb-6">Our mission is to make health management more intelligent and personalized through technological innovation, helping to realize a healthy life for all. Xiaoyang Technology has launched a variety of innovative products, including AI Vitality Mirror, Vitality Treasure physical and mental health measurement cloud service, which are widely used in families, enterprises and medical institutions.</p>
+                    <p>With professional R&D background and technical advantages in the field of physical and mental health, Xiaoyang Technology is leading the new trend of health technology and providing more accurate and convenient health services for global users.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Innovative Technology Products</h2>
+                <p class="text-xl text-neutral">Comprehensive Protection for Your Physical and Mental Health</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <img src="https://s.coze.cn/image/Z7yASwqefHQ/" alt="AI Vitality Mirror" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Xiaoyang AI Vitality Mirror</h3>
+                        <p class="text-neutral mb-4">21.5-inch smart health mirror, equipped with Android system and high-performance hardware, supports non-contact health detection, providing analysis of multiple indicators such as heart rate, blood pressure, and blood oxygen.</p>
+                        <a href="#" class="text-primary font-medium hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>活力宝身心健康云服务</h3>
-                        <p>基于AI和大数据技术的SAAS平台，提供个性化的健康建议和异常检测，适用于企业和个人健康管理。</p>
-                        <a href="#" class="btn">了解更多</a>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <img src="https://s.coze.cn/image/q6fYcwYAhZk/" alt="Vitality Treasure" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Vitality Treasure Physical and Mental Health Cloud Service</h3>
+                        <p class="text-neutral mb-4">SAAS platform based on AI and big data technology, providing personalized health advice and anomaly detection, suitable for enterprise and personal health management.</p>
+                        <a href="#" class="text-primary font-medium hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
-                <div class="product-card">
-                    <div class="product-img">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="product-info">
-                        <h3>AI轻体检</h3>
-                        <p>通过手机摄像头即可完成心血管和心理健康检测，提供心率、血压、血氧、心理压力等多项指标分析。</p>
-                        <a href="#" class="btn">了解更多</a>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <img src="https://s.coze.cn/image/shQ1F3IObR0/" alt="AI Light Physical Examination" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">AI Light Physical Examination</h3>
+                        <p class="text-neutral mb-4">Cardiovascular and mental health detection can be completed through the mobile phone camera, providing analysis of multiple indicators such as heart rate, blood pressure, blood oxygen, and psychological stress.</p>
+                        <a href="#" class="text-primary font-medium hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 技术特点 -->
-    <section class="section" id="tech">
-        <div class="container">
-            <div class="section-title">
-                <h2>技术特点</h2>
-                <p>创新科技驱动，打造健康管理新体验</p>
+    <!-- Technologies -->
+    <section id="technologies" class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Driven by Innovative Technology</h2>
+                <p class="text-xl text-neutral">Creating a New Experience in Health Management</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </div>
-            <div class="tech-features">
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-brain"></i>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Tech 1 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-brain text-2xl text-primary"></i>
                     </div>
-                    <h3>人工智能分析</h3>
-                    <p>基于深度学习的AI算法，精准分析身心健康数据，提供个性化健康建议。</p>
+                    <h3 class="text-xl font-bold mb-3">Artificial Intelligence Analysis</h3>
+                    <p class="text-neutral">AI algorithms based on deep learning, accurately analyze physical and mental health data, and provide personalized health advice.</p>
                 </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-cloud"></i>
+                
+                <!-- Tech 2 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-cloud text-2xl text-primary"></i>
                     </div>
-                    <h3>云端大数据平台</h3>
-                    <p>构建身心健康大数据平台，实现数据的实时监测、分析和预警功能。</p>
+                    <h3 class="text-xl font-bold mb-3">Cloud Big Data Platform</h3>
+                    <p class="text-neutral">Build a physical and mental health big data platform to realize real-time monitoring, analysis and early warning functions of data.</p>
                 </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-camera"></i>
+                
+                <!-- Tech 3 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-camera text-2xl text-primary"></i>
                     </div>
-                    <h3>非接触式检测</h3>
-                    <p>通过摄像头和传感器实现无接触健康检测，提升用户体验和便捷性。</p>
+                    <h3 class="text-xl font-bold mb-3">Non-contact Detection</h3>
+                    <p class="text-neutral">Realize non-contact health detection through cameras and sensors, improving user experience and convenience.</p>
                 </div>
-                <div class="tech-card">
-                    <div class="tech-icon">
-                        <i class="fas fa-shield-alt"></i>
+                
+                <!-- Tech 4 -->
+                <div class="bg-gray-50 rounded-xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tachometer-alt text-2xl text-primary"></i>
                     </div>
-                    <h3>高精度测量</h3>
-                    <p>采用多光谱成像和血液光学成像技术，确保测量结果的准确性和可靠性。</p>
+                    <h3 class="text-xl font-bold mb-3">High-precision Measurement</h3>
+                    <p class="text-neutral">Using multi-spectral imaging and blood optical imaging technology to ensure the accuracy and reliability of measurement results.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 应用场景 -->
-    <section class="section scenarios" id="scenarios">
-        <div class="container">
-            <div class="section-title">
-                <h2>应用场景</h2>
-                <p>多场景应用，全方位满足健康管理需求</p>
+    <!-- Applications -->
+    <section id="applications" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Multi-scenario Applications</h2>
+                <p class="text-xl text-neutral">Fully Meeting Health Management Needs</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </div>
-            <div class="scenario-container">
-                <div class="scenario-card">
-                    <div class="scenario-header">
-                        <h3>家庭健康管理</h3>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- App 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="bg-primary bg-opacity-10 p-6">
+                        <i class="fas fa-home text-3xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Family Health Management</h3>
                     </div>
-                    <div class="scenario-body">
-                        <ul>
-                            <li>日常健康监测与记录</li>
-                            <li>家庭成员健康数据管理</li>
-                            <li>老人健康远程监护</li>
-                            <li>慢病居家管理方案</li>
-                            <li>家庭健康风险评估</li>
+                    <div class="p-6">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Daily health monitoring and recording</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Family member health data management</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Remote health monitoring for the elderly</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Chronic disease home management program</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Family health risk assessment</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="scenario-card">
-                    <div class="scenario-header">
-                        <h3>企业健康管理</h3>
+                
+                <!-- App 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="bg-primary bg-opacity-10 p-6">
+                        <i class="fas fa-building text-3xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Enterprise Health Management</h3>
                     </div>
-                    <div class="scenario-body">
-                        <ul>
-                            <li>员工健康档案管理</li>
-                            <li>职业病风险预警系统</li>
-                            <li>职场压力监测与干预</li>
-                            <li>健康企业建设方案</li>
-                            <li>团体健康数据分析</li>
+                    <div class="p-6">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Employee health record management</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Occupational disease risk early warning system</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Workplace stress monitoring and intervention</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Healthy enterprise construction program</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Group health data analysis</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="scenario-card">
-                    <div class="scenario-header">
-                        <h3>医疗机构</h3>
+                
+                <!-- App 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                    <div class="bg-primary bg-opacity-10 p-6">
+                        <i class="fas fa-hospital text-3xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-3">Medical Institutions</h3>
                     </div>
-                    <div class="scenario-body">
-                        <ul <li>门诊快速健康筛查</li>
-                            <li>慢病患者远程监护</li>
-                            <li>健康数据分析平台</li>
-                            <li>康复效果评估系统</li>
-                            <li>健康管理方案定制</li>
+                    <div class="p-6">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Outpatient rapid health screening</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Remote monitoring of chronic disease patients</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Health data analysis platform</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Rehabilitation effect evaluation system</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-secondary mr-2 mt-1"></i>
+                                <span>Customized health management programs</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -840,154 +350,237 @@
         </div>
     </section>
 
-    <!-- 合作伙伴 -->
-    <section class="section" id="partners">
-        <div class="container">
-            <div class="section-title">
-                <h2>合作伙伴</h2>
-                <p>携手行业领先机构，共创健康科技未来</p>
+    <!-- Partners -->
+    <section id="partners" class="py-16 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Our Partners</h2>
+                <p class="text-xl text-neutral">Working with Industry-leading Institutions to Create a Healthy Technology Future</p>
+                <div class="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </div>
-            <div class="partners-grid">
-                <div class="partner-logo">
-                    <img src=" https://via.placeholder.com/150x60?text=Partner+1 " alt="合作伙伴">
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="flex items-center justify-center">
+                    <img src="https://s.coze.cn/image/9Yje0Ba3D-8/" alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
-                <div class="partner-logo">
-                    <img src=" https://via.placeholder.com/150x60?text=Partner+2 " alt="合作伙伴">
+                <div class="flex items-center justify-center">
+                    <img src="https://s.coze.cn/image/-sV8KW-adYY/" alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
-                <div class="partner-logo">
-                    <img src=" https://via.placeholder.com/150x60?text=Partner+3 " alt="合作伙伴">
+                <div class="flex items-center justify-center">
+                    <img src="https://s.coze.cn/image/jth84seu4tg/" alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
-                <div class="partner-logo">
-                    <img src=" https://via.placeholder.com/150x60?text=Partner+4 " alt="合作伙伴">
+                <div class="flex items-center justify-center">
+                    <img src="https://s.coze.cn/image/9I3W9BEpcoc/" alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
-                <div class="partner-logo">
-                    <img src=" https://via.placeholder.com/150x60?text=Partner+5 " alt="合作伙伴">
+                <div class="flex items-center justify-center">
+                    <img src="https://s.coze.cn/image/wDz9tQuPF7I/" alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
-                <div class="partner-logo">
-                    <img src=" https://via.placeholder.com/150x60?text=Partner+6 " alt="合作伙伴">
+                <div class="flex items-center justify-center">
+                    <img src="https://s.coze.cn/image/OfmznrIimjE/" alt="Partner Logo" class="partner-logo max-h-16">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 联系我们 -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>联系我们</h2>
-                <p>有任何问题或合作意向，欢迎随时联系我们</p>
+    <!-- Contact -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Get More Information</h2>
+                <div class="w-20 h-1 bg-primary mx-auto"></div>
             </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>获取更多信息</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>公司地址</h4>
-                                <p>北京市海淀区科技园区创新大厦15层</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>联系电话</h4>
-                                <p>+86 10 8888 7777</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>电子邮箱</h4>
-                                <p>contact@xiaoyangtech.com</p>
-                            </div>
-                        </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-map-marker-alt text-primary mr-2"></i> Company Address
+                        </h3>
+                        <p>15th Floor, Innovation Building, Science and Technology Park, Haidian District, Beijing</p>
                     </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-weixin"></i></a>
-                        <a href="#"><i class="fab fa-weibo"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-phone text-primary mr-2"></i> Contact Phone
+                        </h3>
+                        <p>+86 10 8888 7777</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-envelope text-primary mr-2"></i> Email Address
+                        </h3>
+                        <p>contact@xiaoyangtech.com</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">姓名</label>
-                            <input type="text" id="name" required>
+                
+                <div>
+                    <form id="contactForm" class="bg-white rounded-xl shadow-md p-8">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <div id="nameError" class="error-message hidden">Please enter your name</div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">邮箱</label>
-                            <input type="email" id="email" required>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <div id="emailError" class="error-message hidden">Please enter a valid email address</div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">电话</label>
-                            <input type="tel" id="phone">
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
                         </div>
-                        <div class="form-group">
-                            <label for="message">留言</label>
-                            <textarea id="message" required></textarea>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            <div id="messageError" class="error-message hidden">Please enter your message</div>
                         </div>
-                        <button type="submit" class="btn">提交信息</button>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition">Submit Information</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h4>小阳科技</h4>
-                    <p>致力于通过生物感知和识别技术获取身心健康数据，打造身心健康大数据平台，为用户提供便捷、低成本的健康检测和管理方案。</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-weixin"></i></a>
-                        <a href="#"><i class="fab fa-weibo"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Xiaoyang Technology</h3>
+                    <p class="mb-4">Committed to acquiring physical and mental health data through biological sensing and recognition technology, building a physical and mental health big data platform, and providing users with convenient and low-cost health detection and management solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4>产品中心</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">小阳AI活力镜</a></li>
-                        <li><a href="#">活力宝身心健康云服务</a></li>
-                        <li><a href="#">AI轻体检</a></li>
-                        <li><a href="#">职业健康大数据平台</a></li>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-secondary transition">Xiaoyang AI Vitality Mirror</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Vitality Treasure Cloud Service</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">AI Light Physical Examination</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Occupational Health Big Data Platform</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>快速链接</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">首页</a></li>
-                        <li><a href="#about">公司简介</a></li>
-                        <li><a href="#products">产品中心</a></li>
-                        <li><a href="#tech">技术特点</a></li>
-                        <li><a href="#contact">联系我们</a></li>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-secondary transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-secondary transition">About Us</a></li>
+                        <li><a href="#products" class="hover:text-secondary transition">Products</a></li>
+                        <li><a href="#contact" class="hover:text-secondary transition">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>联系我们</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> 北京市海淀区科技园区创新大厦</li>
-                        <li><i class="fas fa-phone"></i> +86 10 8888 7777</li>
-                        <li><i class="fas fa-envelope"></i> contact@xiaoyangtech.com</li>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-secondary mr-2 mt-1"></i>
+                            <span>Innovation Building, Science and Technology Park, Haidian District, Beijing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-secondary mr-2 mt-1"></i>
+                            <span>+86 10 8888 7777</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-secondary mr-2 mt-1"></i>
+                            <span>contact@xiaoyangtech.com</span>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2024 北京小阳科技有限公司 版权所有 | 京ICP备12345678号</p>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 Beijing Xiaoyang Technology Co., Ltd. All Rights Reserved | Beijing ICP No. 12345678</p>
+                <p class="mt-2">Created by <a href="https://space.coze.cn" class="hover:text-secondary transition">coze space</a> | Page content generated by AI, for reference only</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // 导航
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Form validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // Validate name
+            if (name === '') {
+                document.getElementById('nameError').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('nameError').classList.add('hidden');
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('emailError').classList.add('hidden');
+            }
+            
+            // Validate message
+            if (message === '') {
+                document.getElementById('messageError').classList.remove('hidden');
+                isValid = false;
+            } else {
+                document.getElementById('messageError').classList.add('hidden');
+            }
+            
+            if (isValid) {
+                alert('Thank you for your message! We will contact you soon.');
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html>
