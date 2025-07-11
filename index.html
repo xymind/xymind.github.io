@@ -147,23 +147,6 @@
         }
     </style>
 </head>
-    <script>
-      document.getElementById('switchToZh').addEventListener('click', function() {
-        // 隐藏所有英文，显示中文
-        document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'inline-block');
-        // 切换按钮状态
-        this.classList.add('active');
-        document.getElementById('switchToEn').classList.remove('active');
-      });
-
-      document.getElementById('switchToEn').addEventListener('click', function() {
-        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'inline-block');
-        this.classList.add('active');
-        document.getElementById('switchToZh').classList.remove('active');
-      });
-    </script>
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="navbar fixed top-0 left-0 right-0 z-50 py-4">
@@ -206,11 +189,14 @@
                     </div>
                     
                     <!-- Language Toggle -->
-                   
-                    <div class="language-switcher" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
-                      <button id="switchToEn" class="active">EN</button>
-                      <button id="switchToZh">中文</button>
+                    <div class="lang-toggle ml-4">
+                        <input type="checkbox" id="lang-switch">
+                        <label class="lang-slider"></label>
                     </div>
+                    
+                    <button class="md:hidden text-white md:text-dark focus:outline-none" id="mobileMenuButton">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
                     
                 </div>
             </div>
