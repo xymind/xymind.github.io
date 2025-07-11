@@ -979,7 +979,7 @@
                 // In browsers, you must use server-side code or prompt download as fallback.
                 // Below is a placeholder for Node.js (uncomment and use in Node.js environment):
 
-                /*
+                
                 const fs = require('fs');
                 const filePath = 'Message.log';
                 let existing = '';
@@ -987,9 +987,10 @@
                     existing = fs.readFileSync(filePath, 'utf-8');
                 }
                 fs.writeFileSync(filePath, log + existing, 'utf-8');
-                */
+                
 
                 // In browsers, fallback to download as file (cannot append to existing file automatically)
+                /*
                 const blob = new Blob([log], {type: 'text/plain'});
                 const a = document.createElement('a');
                 a.href = URL.createObjectURL(blob);
@@ -997,7 +998,7 @@
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
-
+                */
                 alert(
                     document.querySelector('#lang-switch:checked') ? 
                     '感谢您的留言！我们会尽快与您联系。' : 
