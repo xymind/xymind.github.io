@@ -805,7 +805,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-dark py-12">
+    <footer class="bg-blue-900 text-white py-12">
         <div class="container mx-auto px-4 md:px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
@@ -928,13 +928,14 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Form validation
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Form validation and write to Message.log
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             let isValid = true;
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
             
             // Validate name
@@ -963,6 +964,40 @@
             }
             
             if (isValid) {
+                // Prepare log content
+                const log = `Name: ${name}
+                        Email: ${email}
+                        Phone: ${phone}
+                        Message: ${message}
+                        Time: ${new Date().toISOString()}
+                        --------------------------
+                        `;
+
+                // Try to append to Message.log (browser JS cannot write directly to local files without user interaction)
+                // This functionality is not possible in standard browser JavaScript due to security restrictions.
+                // If you are running this in Node.js or a privileged environment, you can use fs APIs.
+                // In browsers, you must use server-side code or prompt download as fallback.
+                // Below is a placeholder for Node.js (uncomment and use in Node.js environment):
+
+                /*
+                const fs = require('fs');
+                const filePath = 'Message.log';
+                let existing = '';
+                if (fs.existsSync(filePath)) {
+                    existing = fs.readFileSync(filePath, 'utf-8');
+                }
+                fs.writeFileSync(filePath, log + existing, 'utf-8');
+                */
+
+                // In browsers, fallback to download as file (cannot append to existing file automatically)
+                const blob = new Blob([log], {type: 'text/plain'});
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'Message.log';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
                 alert(
                     document.querySelector('#lang-switch:checked') ? 
                     '感谢您的留言！我们会尽快与您联系。' : 
